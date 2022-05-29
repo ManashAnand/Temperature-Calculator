@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemperatureMeter</title>
+    <style>
+   label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #FFF;
+    padding-left: 10px;
+    line-height: 1.5;
+}
+body {
+    background-color: #202124;
+}
+input {
+    border-radius: 15px;
+    border: 2px solid #3c4043;
+    font-size: 18px;
+    line-height: 1.5;
+    outline: none;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 5px 10px 5px 10px;
+    background-color: #303134;
+}
+#main{
+  display: flex;
+  border: 2px solid white;
+  width: 25rem;
+  padding: 2rem;
+  border-radius: 3rem;
+  
+}
+#container{
+  
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+  <div id="container">
+  <span id="main">
+  <form>
+<label for="celcius">   Celcius__: </label>
+<input type="number" id="cel" value="0"><br><br>
+<label for="farenheit">Farenheit: </label>
+<input type="number" id="far" value="32"><br><br>
+<!-- c=k+273.15  -->
+<label for="kelvin">kelvin___: </label>
+<input type="number" id="kel" value="273.15"><br><br>
+
+  </form>
+</span>
+</div>
+<script>
+var cel = document.getElementById("cel");
+var far = document.getElementById("far");
+var kel = document.getElementById("kel");
+alert("THIS IS A TEMPERATURE CHANGER CALCULATOR");
+window.onload = function() {
+cel.oninput = function()
+{
+  kel.value = (Number(cel.value) + 273.15);
+
+  far.value = ((Number(cel.value) * 9/5) + 32);
+};
+
+ far.oninput= function()
+{
+  cel.value = ((far.value - 32) * (5/9));
+  kel.value = (273.15+(5/9)*(far.value-32));
+};
+
+kel.oninput = function()
+{
+  cel.value = (kel.value - 273.15);
+  far.value = (((kel.value-273.15)*9/5)+32);
+};
+};
+</script>
+</body>
+</html>
